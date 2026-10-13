@@ -1,3 +1,12 @@
 {
-  "items": []
+  "items": [
+    {
+      "tipo": "foto",
+      "fecha": "2026-10-12",
+      "partido": "Final cruz azul",
+      "categoria": "RETRATO",
+      "titulo": "Omg",
+      "media": "/img/uploads/screenshot_20261012_213219_instagram.jpg"
+    }
+  ]
 }
