@@ -1,0 +1,55 @@
+/* ===== Base ===== */
+body {
+  background: #2B2E33;
+  color: #F3F4F6;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ===== Fondo estilo césped ===== */
+.grass-lines {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(34, 197, 94, .07) 0 60px,
+    transparent 60px 120px
+  );
+}
+
+/* ===== Tarjetas de la galería ===== */
+.card-img {
+  transition: transform .7s cubic-bezier(.2, .8, .2, 1);
+}
+.gallery-card:hover .card-img {
+  transform: scale(1.08);
+}
+
+/* ===== Botones / etiquetas inclinadas ===== */
+.skew-tag {
+  transform: skewX(-12deg);
+}
+.skew-tag > * {
+  transform: skewX(12deg);
+  display: inline-block;
+}
+
+/* ===== Acreditación de prensa ===== */
+.lanyard-hole {
+  width: 64px;
+  height: 10px;
+  border-radius: 999px;
+  background: #1F2226;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, .6);
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #1F2226; }
+::-webkit-scrollbar-thumb { background: #22C55E; border-radius: 8px; }
+
+/* ===== Animaciones ===== */
+.fade-in {
+  animation: fade .5s ease both;
+}
+@keyframes fade {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}

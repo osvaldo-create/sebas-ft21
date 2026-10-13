@@ -1,0 +1,41 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Subida de archivos (fotos y videos)
+media_folder: "img/uploads"
+public_folder: "/img/uploads"
+
+locale: "es"
+site_url: https://TU-SITIO.netlify.app   # <- cámbialo por tu dominio real
+display_url: https://TU-SITIO.netlify.app
+
+collections:
+  # Colección "galeria": un archivo único con una lista de elementos.
+  # La página lo lee desde content/galeria.json (sin build ni base de datos).
+  - name: "galeria"
+    label: "Galería"
+    files:
+      - name: "galeria"
+        label: "Fotos y videos"
+        file: "content/galeria.json"
+        fields:
+          - label: "Elementos"
+            name: "items"
+            widget: "list"
+            label_singular: "elemento"
+            summary: "{{fields.titulo}} · {{fields.categoria}}"
+            fields:
+              - { label: "Título", name: "titulo", widget: "string" }
+              - label: "Categoría"
+                name: "categoria"
+                widget: "select"
+                options: ["VS", "MOON", "DOBLE EXPOSICIÓN", "DARK", "ACCIÓN", "RETRATO"]
+              - { label: "Partido (badge)", name: "partido", widget: "string", required: false, hint: "Ej: Final vs Tigres" }
+              - label: "Tipo"
+                name: "tipo"
+                widget: "select"
+                options: ["foto", "video"]
+                default: "foto"
+              - { label: "Imagen / Video", name: "media", widget: "file", hint: "Sube una imagen (jpg, png, webp) o un video (mp4, webm)" }
+              - { label: "Fecha", name: "fecha", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
