@@ -1,3 +1,12 @@
 {
-  "items": []
+  "items": [
+    {
+      "categoria": "PARTIDOS",
+      "titulo": "Omg",
+      "partido": "Cruz azul",
+      "tipo": "foto",
+      "fecha": "2026-10-12",
+      "media": "/img/uploads/screenshot_20261012_213219_instagram.jpg"
+    }
+  ]
 }
