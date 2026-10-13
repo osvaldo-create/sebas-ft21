@@ -3,12 +3,12 @@ backend:
   branch: main
 
 # Subida de archivos (fotos y videos)
-media_folder: "img/uploads"
+media_folder: "sebas-ft21/img/uploads"
 public_folder: "/img/uploads"
 
 locale: "es"
-site_url: https://TU-SITIO.netlify.app   # <- cámbialo por tu dominio real
-display_url: https://TU-SITIO.netlify.app
+site_url: https://catalogosebas.netlify.app
+display_url: https://catalogosebas.netlify.app
 
 collections:
   # Colección "galeria": un archivo único con una lista de elementos.
@@ -18,7 +18,7 @@ collections:
     files:
       - name: "galeria"
         label: "Fotos y videos"
-        file: "content/galeria.json"
+        file: "sebas-ft21/content/galeria.json"
         fields:
           - label: "Elementos"
             name: "items"
