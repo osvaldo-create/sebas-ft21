@@ -24,18 +24,19 @@ collections:
             name: "items"
             widget: "list"
             label_singular: "elemento"
-            summary: "{{fields.titulo}} · {{fields.categoria}}"
+            summary: "{{fields.categoria}} · {{fields.titulo}}"
             fields:
-              - { label: "Título", name: "titulo", widget: "string" }
+              # Único campo obligatorio
               - label: "Categoría"
                 name: "categoria"
                 widget: "select"
-                options: ["VS", "MOON", "DOBLE EXPOSICIÓN", "DARK", "ACCIÓN", "RETRATO"]
-              - { label: "Partido (badge)", name: "partido", widget: "string", required: false, hint: "Ej: Final vs Tigres" }
-              - label: "Tipo"
-                name: "tipo"
-                widget: "select"
-                options: ["foto", "video"]
-                default: "foto"
-              - { label: "Imagen / Video", name: "media", widget: "file", hint: "Sube una imagen (jpg, png, webp) o un video (mp4, webm)" }
-              - { label: "Fecha", name: "fecha", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+                options: ["PARTIDOS", "NATURALEZA", "TRABAJO"]
+                default: "PARTIDOS"
+
+              # Todo lo demás es opcional
+              - { label: "Imagen / Video", name: "media", widget: "file", required: false, hint: "Sube una imagen (jpg, png, webp) o un video corto (mp4, webm)" }
+              - { label: "Título", name: "titulo", widget: "string", required: false }
+              - { label: "Partido (etiqueta)", name: "partido", widget: "string", required: false, hint: "Opcional. Ej: Final vs Tigres" }
+              - { label: "Tipo", name: "tipo", widget: "select", options: ["foto", "video"], required: false, hint: "Opcional. Si lo dejas vacío, la página detecta si es video por la extensión." }
+              # Sin "default": Decap la llena sola con la fecha de hoy al agregar un elemento nuevo
+              - { label: "Fecha", name: "fecha", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD", required: false }

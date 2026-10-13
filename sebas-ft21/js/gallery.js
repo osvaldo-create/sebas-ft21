@@ -1,14 +1,17 @@
-/* ===== gallery.js: galería dinámica, filtros y lightbox ===== */
+/* ===== gallery.js: galería dinámica, filtros y lightbox (pensado para celular) ===== */
+
+/* ---------- Categorías (filtros fijos) ---------- */
+const CATEGORIAS = ['PARTIDOS', 'NATURALEZA', 'TRABAJO'];
 
 /* ---------- Datos ---------- */
 // Datos de ejemplo: se usan solo si content/galeria.json está vacío o no existe
 const FALLBACK = [
-  { titulo: 'Fotografía 1', categoria: 'VS',               partido: 'Final · 2026',     tipo: 'foto', media: 'https://picsum.photos/seed/ft21a/900/1100', fecha: '2026-09-28' },
-  { titulo: 'Fotografía 2', categoria: 'MOON',             partido: 'Clásico nocturno', tipo: 'foto', media: 'https://picsum.photos/seed/ft21b/900/700',  fecha: '2026-09-20' },
-  { titulo: 'Fotografía 3', categoria: 'DOBLE EXPOSICIÓN', partido: 'Jornada 8',        tipo: 'foto', media: 'https://picsum.photos/seed/ft21c/900/1000', fecha: '2026-09-12' },
-  { titulo: 'Fotografía 4', categoria: 'DARK',             partido: 'Jornada 7',        tipo: 'foto', media: 'https://picsum.photos/seed/ft21d/900/800',  fecha: '2026-09-05' },
-  { titulo: 'Fotografía 5', categoria: 'VS',               partido: 'Semifinal',        tipo: 'foto', media: 'https://picsum.photos/seed/ft21e/900/1100', fecha: '2026-08-30' },
-  { titulo: 'Fotografía 6', categoria: 'MOON',             partido: 'Jornada 6',        tipo: 'foto', media: 'https://picsum.photos/seed/ft21f/900/700',  fecha: '2026-08-22' }
+  { titulo: 'Fotografía 1', categoria: 'PARTIDOS',   partido: 'Final · 2026', tipo: 'foto', media: 'https://picsum.photos/seed/ft21a/900/1100', fecha: '2026-09-28' },
+  { titulo: 'Fotografía 2', categoria: 'NATURALEZA', partido: '',             tipo: 'foto', media: 'https://picsum.photos/seed/ft21b/900/1100', fecha: '2026-09-20' },
+  { titulo: 'Fotografía 3', categoria: 'TRABAJO',    partido: '',             tipo: 'foto', media: 'https://picsum.photos/seed/ft21c/900/1100', fecha: '2026-09-12' },
+  { titulo: 'Fotografía 4', categoria: 'PARTIDOS',   partido: 'Jornada 7',    tipo: 'foto', media: 'https://picsum.photos/seed/ft21d/900/1100', fecha: '2026-09-05' },
+  { titulo: 'Fotografía 5', categoria: 'NATURALEZA', partido: '',             tipo: 'foto', media: 'https://picsum.photos/seed/ft21e/900/1100', fecha: '2026-08-30' },
+  { titulo: 'Fotografía 6', categoria: 'PARTIDOS',   partido: 'Semifinal',    tipo: 'foto', media: 'https://picsum.photos/seed/ft21f/900/1100', fecha: '2026-08-22' }
 ];
 
 let items = [];
@@ -20,9 +23,10 @@ const $gallery = document.getElementById('gallery');
 /* ---------- Helpers ---------- */
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const isVideo = i => i.tipo === 'video' || /\.(mp4|webm|mov)$/i.test(i.media || '');
-const fmtDate = d => d
-  ? new Date(d).toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
-  : '';
+const fmtDate = d => {
+  const t = Date.parse(d);
+  return t ? new Date(t).toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }) : '';
+};
 
 /* ---------- Carga ---------- */
 async function loadGallery() {
@@ -35,18 +39,19 @@ async function loadGallery() {
   } catch (e) {
     items = FALLBACK;
   }
-  items.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
+  // Más recientes primero (los que no tienen fecha van al final)
+  items.sort((a, b) => (Date.parse(b.fecha) || 0) - (Date.parse(a.fecha) || 0));
   buildFilters();
   render();
 }
 
 /* ---------- Filtros ---------- */
-const FILTER_BASE = 'filter-btn font-mono text-xs uppercase tracking-widest px-4 py-2 border transition';
+const FILTER_BASE = 'filter-btn font-mono text-[11px] sm:text-xs uppercase tracking-widest px-3 sm:px-4 py-2 border transition';
 const FILTER_ON   = 'bg-pitch text-deep border-pitch';
 const FILTER_OFF  = 'bg-transparent border-line text-gray-300 hover:border-pitch hover:text-pitch';
 
 function buildFilters() {
-  const cats = ['TODAS', ...new Set(items.map(i => (i.categoria || '').toUpperCase()).filter(Boolean))];
+  const cats = ['TODAS', ...CATEGORIAS];
   document.getElementById('filters').innerHTML = cats.map(c =>
     `<button data-cat="${c}" class="${FILTER_BASE}">${c}</button>`).join('');
   document.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click', () => setFilter(b.dataset.cat)));
@@ -71,16 +76,17 @@ function render() {
   document.getElementById('emptyMsg').classList.toggle('hidden', current.length > 0);
 
   $gallery.innerHTML = current.map((it, n) => `
-<article class="gallery-card fade-in group relative overflow-hidden bg-panel cursor-pointer aspect-[4/5]" data-i="${n}" style="animation-delay:${n * 60}ms">
+    <article class="gallery-card fade-in group relative overflow-hidden bg-panel cursor-pointer aspect-[4/5]" data-i="${n}" style="animation-delay:${n * 60}ms">
       ${isVideo(it)
         ? `<video src="${esc(it.media)}" class="card-img w-full h-full object-cover" muted playsinline preload="metadata"></video>`
-        : `<img src="${esc(it.media)}" alt="${esc(it.titulo)}" loading="lazy" class="card-img w-full h-full object-cover" />`}
-      <span class="absolute top-3 left-3 bg-pitch text-deep font-mono text-[11px] font-bold px-3 py-1 uppercase tracking-wider">${esc(it.partido || it.categoria)}</span>
-      ${isVideo(it) ? '<span class="absolute top-3 right-3 bg-black/70 text-white w-9 h-9 rounded-full flex items-center justify-center"><i class="fa-solid fa-play"></i></span>' : ''}
-      <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-5">
-        <p class="font-mono text-green-400 text-[11px] uppercase tracking-widest">${esc(it.categoria)}</p>
-        <h3 class="font-display text-3xl leading-none text-white">${esc(it.titulo)}</h3>
-        <p class="text-gray-300 text-xs mt-1">${fmtDate(it.fecha)}</p>
+        : `<img src="${esc(it.media)}" alt="${esc(it.titulo || it.categoria)}" loading="lazy" class="card-img w-full h-full object-cover" />`}
+      <span class="absolute top-2 left-2 sm:top-3 sm:left-3 max-w-[75%] truncate bg-pitch text-deep font-mono text-[10px] sm:text-[11px] font-bold px-2 sm:px-3 py-1 uppercase tracking-wider">${esc(it.partido || it.categoria)}</span>
+      ${isVideo(it) ? '<span class="absolute top-2 right-2 sm:top-3 sm:right-3 bg-black/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs"><i class="fa-solid fa-play"></i></span>' : ''}
+      <!-- En celular el texto se ve siempre; en computadora aparece al pasar el mouse -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 md:via-black/40 transition duration-300 flex flex-col justify-end p-3 sm:p-5">
+        <p class="font-mono text-green-400 text-[10px] sm:text-[11px] uppercase tracking-widest">${esc(it.categoria)}</p>
+        ${it.titulo ? `<h3 class="font-display text-xl sm:text-3xl leading-none text-white">${esc(it.titulo)}</h3>` : ''}
+        ${it.fecha ? `<p class="text-gray-300 text-[11px] sm:text-xs mt-1">${fmtDate(it.fecha)}</p>` : ''}
       </div>
       <div class="absolute inset-x-0 bottom-0 h-1 bg-pitch scale-x-0 group-hover:scale-x-100 origin-left transition duration-500"></div>
     </article>`).join('');
@@ -98,8 +104,8 @@ function openLB(n) {
   idx = (n + current.length) % current.length;
   const it = current[idx];
   document.getElementById('lbMedia').innerHTML = isVideo(it)
-    ? `<video src="${esc(it.media)}" controls autoplay class="max-h-[75vh] max-w-full"></video>`
-    : `<img src="${esc(it.media)}" alt="${esc(it.titulo)}" class="max-h-[75vh] max-w-full object-contain" />`;
+    ? `<video src="${esc(it.media)}" controls autoplay playsinline class="max-h-[70vh] max-w-full"></video>`
+    : `<img src="${esc(it.media)}" alt="${esc(it.titulo || it.categoria)}" class="max-h-[70vh] max-w-full object-contain" />`;
   document.getElementById('lbTitle').textContent = it.titulo || '';
   document.getElementById('lbBadge').textContent = it.partido || it.categoria || '';
   document.getElementById('lbDate').textContent = fmtDate(it.fecha);
@@ -124,6 +130,16 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeLB();
   if (e.key === 'ArrowLeft') openLB(idx - 1);
   if (e.key === 'ArrowRight') openLB(idx + 1);
+});
+
+// Deslizar el dedo para cambiar de foto en el celular
+let touchX = null;
+lb.addEventListener('touchstart', e => { touchX = e.changedTouches[0].clientX; }, { passive: true });
+lb.addEventListener('touchend', e => {
+  if (touchX === null) return;
+  const dx = e.changedTouches[0].clientX - touchX;
+  if (Math.abs(dx) > 50) openLB(idx + (dx < 0 ? 1 : -1));
+  touchX = null;
 });
 
 loadGallery();

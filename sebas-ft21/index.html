@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1F2226" />
   <title>SEBAS FT21 | Fotógrafo Deportivo de Fútbol</title>
   <meta name="description" content="Sebastián (@sebas_ft21) - Fotografía deportiva de fútbol. La intensidad del juego en cada captura." />
 
@@ -22,12 +23,12 @@
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 
-<body class="antialiased bg-base text-gray-100">
+<body class="antialiased bg-base text-gray-100 overflow-x-hidden">
 
   <!-- ============ HEADER ============ -->
   <header class="fixed top-0 inset-x-0 z-40 backdrop-blur-md bg-deep/90 border-b border-line">
-    <nav class="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
-      <a href="#inicio" class="font-display text-3xl tracking-wider leading-none">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-5 h-14 md:h-16 flex items-center justify-between">
+      <a href="#inicio" class="font-display text-2xl sm:text-3xl tracking-wider leading-none">
         SEBAS <span class="text-pitch">FT21</span>
       </a>
 
@@ -38,55 +39,55 @@
       </ul>
 
       <div class="flex items-center gap-3">
-        <a href="#contacto" class="skew-tag bg-pitch text-deep font-bold uppercase text-sm tracking-widest px-5 py-2 hover:bg-pitch-dark transition">
+        <a href="#contacto" class="skew-tag bg-pitch text-deep font-bold uppercase text-xs sm:text-sm tracking-widest px-4 sm:px-5 py-2 hover:bg-pitch-dark transition">
           <span>Contacto</span>
         </a>
-        <button id="menuBtn" class="md:hidden text-2xl text-white" aria-label="Menú"><i class="fa-solid fa-bars"></i></button>
+        <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-2xl text-white" aria-label="Menú"><i class="fa-solid fa-bars"></i></button>
       </div>
     </nav>
-    <div id="mobileMenu" class="hidden md:hidden bg-deep border-t border-line px-5 py-4 space-y-3 text-sm font-semibold uppercase tracking-widest text-gray-200">
-      <a href="#inicio" class="block hover:text-pitch">Inicio</a>
-      <a href="#galeria" class="block hover:text-pitch">Galería</a>
-      <a href="#sobre-mi" class="block hover:text-pitch">Sobre mí</a>
+    <div id="mobileMenu" class="hidden md:hidden bg-deep border-t border-line px-4 py-2 text-sm font-semibold uppercase tracking-widest text-gray-200">
+      <a href="#inicio" class="block py-3 hover:text-pitch">Inicio</a>
+      <a href="#galeria" class="block py-3 border-t border-line hover:text-pitch">Galería</a>
+      <a href="#sobre-mi" class="block py-3 border-t border-line hover:text-pitch">Sobre mí</a>
     </div>
   </header>
 
   <!-- ============ HERO ============ -->
-  <section id="inicio" class="relative pt-32 pb-24 overflow-hidden grass-lines">
+  <section id="inicio" class="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden grass-lines">
     <div class="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-pitch/10 blur-3xl"></div>
     <div class="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-pitch to-transparent"></div>
 
-    <div class="relative max-w-7xl mx-auto px-5 grid lg:grid-cols-2 gap-14 items-center">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-5 grid lg:grid-cols-2 gap-12 lg:gap-14 items-center">
       <div>
-        <p class="font-mono text-pitch text-xs tracking-[.35em] uppercase mb-5">
+        <p class="font-mono text-pitch text-[11px] sm:text-xs tracking-[.3em] uppercase mb-4 sm:mb-5">
           <i class="fa-solid fa-futbol mr-2"></i>Fotografía deportiva · Fútbol
         </p>
-        <h1 class="font-display text-6xl sm:text-7xl lg:text-8xl leading-[.92] uppercase text-white">
+        <h1 class="font-display text-5xl sm:text-7xl lg:text-8xl leading-[.95] uppercase text-white">
           La intensidad<br />del juego <span class="text-pitch">en cada captura</span>
         </h1>
-        <p class="mt-6 text-gray-300 max-w-xl text-lg">
+        <p class="mt-5 sm:mt-6 text-gray-300 max-w-xl text-base sm:text-lg">
           Cobertura desde la línea de banda: goles, entradas, celebraciones y ese instante que define un partido. Fotografía y video con alma de cancha.
         </p>
-        <div class="mt-9 flex flex-wrap gap-4">
-          <a href="#galeria" class="skew-tag bg-pitch text-deep font-bold uppercase tracking-widest px-8 py-3 hover:bg-pitch-dark transition"><span>Ver galería</span></a>
-          <a href="https://instagram.com/sebas_ft21" target="_blank" rel="noopener" class="skew-tag border-2 border-pitch text-pitch font-bold uppercase tracking-widest px-8 py-3 hover:bg-pitch hover:text-deep transition"><span><i class="fa-brands fa-instagram mr-2"></i>@sebas_ft21</span></a>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <a href="#galeria" class="skew-tag text-center bg-pitch text-deep font-bold uppercase tracking-widest px-8 py-3 hover:bg-pitch-dark transition"><span>Ver galería</span></a>
+          <a href="https://instagram.com/sebas_ft21" target="_blank" rel="noopener" class="skew-tag text-center border-2 border-pitch text-pitch font-bold uppercase tracking-widest px-8 py-3 hover:bg-pitch hover:text-deep transition"><span><i class="fa-brands fa-instagram mr-2"></i>@sebas_ft21</span></a>
         </div>
       </div>
 
       <!-- Acreditación de prensa -->
-      <div class="flex justify-center lg:justify-end">
-        <div class="relative w-[300px] sm:w-[340px] rotate-3 hover:rotate-0 transition duration-500">
+      <div class="flex justify-center lg:justify-end pt-8 lg:pt-0">
+        <div class="relative w-[260px] sm:w-[340px] rotate-3 hover:rotate-0 transition duration-500">
           <div class="absolute left-1/2 -translate-x-1/2 -top-10 w-3 h-12 bg-pitch/80"></div>
           <div class="bg-panel border-2 border-pitch/60 rounded-2xl overflow-hidden shadow-[0_0_60px_rgba(34,197,94,.2)]">
             <div class="flex justify-center pt-4"><div class="lanyard-hole"></div></div>
-            <div class="bg-pitch text-deep text-center font-display text-4xl tracking-[.25em] py-2 mt-4">PRENSA</div>
-            <div class="p-6 text-center">
-              <div class="w-28 h-28 mx-auto rounded-full border-4 border-pitch bg-deep flex items-center justify-center text-5xl text-pitch">
-                <i class="fa-solid fa-camera"></i>
+            <div class="bg-pitch text-deep text-center font-display text-3xl sm:text-4xl tracking-[.25em] py-2 mt-4">PRENSA</div>
+            <div class="p-5 sm:p-6 text-center">
+              <div class="w-28 h-28 sm:w-32 sm:h-32 mx-auto rounded-full border-4 border-pitch bg-deep overflow-hidden">
+                <img src="img/sebas.png" alt="Sebastián, fotógrafo deportivo" class="w-full h-full object-cover object-[center_20%]" />
               </div>
-              <h3 class="font-display text-4xl mt-4 tracking-wide text-white">SEBASTIÁN</h3>
-              <p class="font-mono text-xs text-pitch tracking-widest uppercase">Fotógrafo deportivo</p>
-              <div class="mt-5 grid grid-cols-2 gap-2 text-left font-mono text-[11px] text-gray-400">
+              <h3 class="font-display text-3xl sm:text-4xl mt-4 tracking-wide text-white">SEBASTIÁN</h3>
+              <p class="font-mono text-[11px] sm:text-xs text-pitch tracking-widest uppercase">Fotógrafo deportivo</p>
+              <div class="mt-5 grid grid-cols-2 gap-2 text-left font-mono text-[10px] sm:text-[11px] text-gray-400">
                 <div class="border border-line p-2"><span>ACCESO</span><br /><span class="text-white">CAMPO / BANDA</span></div>
                 <div class="border border-line p-2"><span>TEMPORADA</span><br /><span class="text-white">2026</span></div>
                 <div class="border border-line p-2"><span>DEPORTE</span><br /><span class="text-white">FÚTBOL</span></div>
@@ -101,75 +102,75 @@
   </section>
 
   <!-- ============ GALERÍA ============ -->
-  <section id="galeria" class="py-24 bg-deep border-y border-line">
-    <div class="max-w-7xl mx-auto px-5">
-      <div class="flex flex-wrap items-end justify-between gap-6 mb-10">
+  <section id="galeria" class="py-16 md:py-24 bg-deep border-y border-line">
+    <div class="max-w-7xl mx-auto px-4 sm:px-5">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-8 md:mb-10">
         <div>
-          <p class="font-mono text-pitch text-xs tracking-[.35em] uppercase mb-2">Portafolio</p>
-          <h2 class="font-display text-5xl sm:text-6xl text-white">GALERÍA <span class="text-pitch">EN VIVO</span></h2>
+          <p class="font-mono text-pitch text-[11px] sm:text-xs tracking-[.3em] uppercase mb-2">Portafolio</p>
+          <h2 class="font-display text-4xl sm:text-6xl text-white">GALERÍA <span class="text-pitch">EN VIVO</span></h2>
         </div>
         <div id="filters" class="flex flex-wrap gap-2"></div>
       </div>
 
-      <div id="gallery" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+      <div id="gallery" class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5"></div>
       <p id="emptyMsg" class="hidden text-center text-gray-400 py-16">No hay contenido en esta categoría todavía.</p>
     </div>
   </section>
 
   <!-- ============ SOBRE MÍ ============ -->
-  <section id="sobre-mi" class="py-24 bg-base">
-    <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-2 gap-14 items-center">
-      <div class="relative">
-        <div class="aspect-[4/5] rounded-2xl bg-gradient-to-br from-panel to-deep border border-pitch/40 flex items-center justify-center overflow-hidden">
-          <i class="fa-solid fa-camera-retro text-[8rem] text-pitch/40"></i>
+  <section id="sobre-mi" class="py-16 md:py-24 bg-base">
+    <div class="max-w-6xl mx-auto px-4 sm:px-5 grid md:grid-cols-2 gap-12 md:gap-14 items-center">
+      <div class="relative max-w-[300px] md:max-w-none w-full mx-auto">
+        <div class="aspect-[4/5] rounded-2xl bg-panel border border-pitch/40 overflow-hidden">
+          <img src="img/sebas.png" alt="Sebastián fotografiando un partido" loading="lazy" class="w-full h-full object-cover object-center" />
         </div>
-        <div class="absolute -bottom-4 -right-4 bg-pitch text-deep font-display text-3xl px-5 py-2 skew-tag"><span>FT21</span></div>
+        <div class="absolute -bottom-4 -right-3 sm:-right-4 bg-pitch text-deep font-display text-2xl sm:text-3xl px-5 py-2 skew-tag"><span>FT21</span></div>
       </div>
       <div>
-        <p class="font-mono text-pitch text-xs tracking-[.35em] uppercase mb-3">Sobre mí / Equipo</p>
-        <h2 class="font-display text-5xl sm:text-6xl mb-6 text-white">DETRÁS DEL <span class="text-pitch">LENTE</span></h2>
+        <p class="font-mono text-pitch text-[11px] sm:text-xs tracking-[.3em] uppercase mb-3">Sobre mí / Equipo</p>
+        <h2 class="font-display text-4xl sm:text-6xl mb-5 sm:mb-6 text-white">DETRÁS DEL <span class="text-pitch">LENTE</span></h2>
         <p class="text-gray-200 leading-relaxed mb-4">
           Soy Sebastián, fotógrafo deportivo especializado en fútbol. Mi objetivo es congelar la emoción pura: la tensión previa al disparo, el grito del gol y la entrega de quienes juegan con el corazón.
         </p>
         <p class="text-gray-400 leading-relaxed mb-8">
           Trabajo junto a un pequeño equipo creativo de foto y video para cubrir partidos, torneos y sesiones de autor con edición de alto contraste y look cinematográfico.
         </p>
-        <div class="grid grid-cols-3 gap-4 text-center">
-          <div class="border border-line p-4 bg-panel"><p class="font-display text-4xl text-pitch">+50</p><p class="text-xs text-gray-400 uppercase tracking-widest">Partidos</p></div>
-          <div class="border border-line p-4 bg-panel"><p class="font-display text-4xl text-pitch">+5K</p><p class="text-xs text-gray-400 uppercase tracking-widest">Capturas</p></div>
-          <div class="border border-line p-4 bg-panel"><p class="font-display text-4xl text-pitch">100%</p><p class="text-xs text-gray-400 uppercase tracking-widest">Pasión</p></div>
+        <div class="grid grid-cols-3 gap-3 sm:gap-4 text-center">
+          <div class="border border-line p-3 sm:p-4 bg-panel"><p class="font-display text-3xl sm:text-4xl text-pitch">+50</p><p class="text-[10px] sm:text-xs text-gray-400 uppercase tracking-widest">Partidos</p></div>
+          <div class="border border-line p-3 sm:p-4 bg-panel"><p class="font-display text-3xl sm:text-4xl text-pitch">+5K</p><p class="text-[10px] sm:text-xs text-gray-400 uppercase tracking-widest">Capturas</p></div>
+          <div class="border border-line p-3 sm:p-4 bg-panel"><p class="font-display text-3xl sm:text-4xl text-pitch">100%</p><p class="text-[10px] sm:text-xs text-gray-400 uppercase tracking-widest">Pasión</p></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============ FOOTER / CONTACTO ============ -->
-  <footer id="contacto" class="pt-20 pb-8 bg-deep border-t border-line">
-    <div class="max-w-6xl mx-auto px-5 text-center">
-      <h2 class="font-display text-5xl sm:text-7xl text-white">¿LISTO PARA LA <span class="text-pitch">PRÓXIMA JUGADA?</span></h2>
+  <footer id="contacto" class="pt-16 md:pt-20 pb-8 bg-deep border-t border-line">
+    <div class="max-w-6xl mx-auto px-4 sm:px-5 text-center">
+      <h2 class="font-display text-4xl sm:text-7xl text-white">¿LISTO PARA LA <span class="text-pitch">PRÓXIMA JUGADA?</span></h2>
       <p class="text-gray-400 mt-4 max-w-xl mx-auto">Cobertura de partidos, torneos y sesiones deportivas. Escríbeme por Instagram.</p>
 
-      <div class="mt-8 flex flex-wrap justify-center gap-4">
-        <a href="https://instagram.com/sebas_ft21" target="_blank" rel="noopener" class="skew-tag bg-pitch text-deep font-bold tracking-widest px-8 py-3 hover:bg-pitch-dark transition"><span><i class="fa-brands fa-instagram mr-2"></i>@sebas_ft21</span></a>
+      <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+        <a href="https://instagram.com/sebas_ft21" target="_blank" rel="noopener" class="skew-tag text-center bg-pitch text-deep font-bold tracking-widest px-8 py-3 hover:bg-pitch-dark transition"><span><i class="fa-brands fa-instagram mr-2"></i>@sebas_ft21</span></a>
       </div>
 
-      <div class="mt-16 pt-6 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-400 font-mono">
+      <div class="mt-14 pt-6 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-400 font-mono">
         <p>© <span id="year"></span> SEBAS FT21 · Todos los derechos reservados</p>
-        <a href="/admin/" class="hover:text-pitch transition"><i class="fa-solid fa-lock mr-1"></i>Panel admin</a>
+        <a href="/admin/" class="hover:text-pitch transition py-1"><i class="fa-solid fa-lock mr-1"></i>Panel admin</a>
       </div>
     </div>
   </footer>
 
   <!-- ============ LIGHTBOX ============ -->
-  <div id="lightbox" class="hidden fixed inset-0 z-50 bg-black/95 items-center justify-center p-4">
-    <button id="lbClose" class="absolute top-5 right-6 text-4xl text-white hover:text-pitch" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
-    <button id="lbPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-4xl text-white hover:text-pitch" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
-    <button id="lbNext" class="absolute right-4 top-1/2 -translate-y-1/2 text-4xl text-white hover:text-pitch" aria-label="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+  <div id="lightbox" class="hidden fixed inset-0 z-50 bg-black/95 items-center justify-center p-3 sm:p-4">
+    <button id="lbClose" class="absolute top-3 right-3 sm:top-5 sm:right-6 w-11 h-11 flex items-center justify-center text-3xl sm:text-4xl text-white hover:text-pitch" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+    <button id="lbPrev" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/50 flex items-center justify-center text-xl sm:text-3xl text-white hover:text-pitch" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+    <button id="lbNext" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/50 flex items-center justify-center text-xl sm:text-3xl text-white hover:text-pitch" aria-label="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
     <figure class="max-w-5xl w-full">
       <div id="lbMedia" class="flex justify-center"></div>
       <figcaption class="mt-4 text-center">
         <span id="lbBadge" class="inline-block bg-pitch text-deep font-mono text-xs font-bold px-3 py-1 uppercase mb-2"></span>
-        <h3 id="lbTitle" class="font-display text-3xl text-white"></h3>
+        <h3 id="lbTitle" class="font-display text-2xl sm:text-3xl text-white"></h3>
         <p id="lbDate" class="text-gray-300 text-sm"></p>
       </figcaption>
     </figure>

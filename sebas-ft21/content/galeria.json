@@ -1,20 +1,3 @@
 {
-  "items": [
-    {
-      "tipo": "foto",
-      "fecha": "2026-10-12",
-      "partido": "Final cruz azul",
-      "categoria": "RETRATO",
-      "titulo": "Omg",
-      "media": "/img/uploads/screenshot_20261012_213219_instagram.jpg"
-    },
-    {
-      "tipo": "foto",
-      "titulo": "Omg 2",
-      "categoria": "RETRATO",
-      "partido": "Sebas",
-      "fecha": "2026-10-12",
-      "media": "/img/uploads/screenshot_20261012_213157_instagram.jpg"
-    }
-  ]
+  "items": []
 }
