@@ -2,11 +2,11 @@
   "items": [
     {
       "categoria": "PARTIDOS",
-      "titulo": "Omg 2",
-      "partido": "Sebas",
-      "tipo": "foto",
+      "titulo": "Omg 3",
+      "partido": "Video",
+      "tipo": "video",
       "fecha": "2026-10-12",
-      "media": "/img/uploads/screenshot_20261012_213157_instagram.jpg"
+      "media": "/img/uploads/vid_20260928_072257_839.mp4"
     }
   ]
 }
